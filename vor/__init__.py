@@ -5,6 +5,4 @@
 class RandomNameBase(object):
     pass
 
-
-
 # vim: filetype=python

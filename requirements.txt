@@ -1,0 +1,7 @@
+--index-url https://pypi.python.org/simple/
+--allow-all-external
+
+--allow-unverified py_utilities
+py_utilities
+
+-e .
