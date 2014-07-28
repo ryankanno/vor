@@ -14,7 +14,6 @@ setup(name='vor',
       package_data={'vor': ['data/*.*']},
       url="https://github.com/ryankanno/vor",
       install_requires=['enum34', 'py_utilities'],
-      dependency_links=['http://github.com/ryankanno/py-utilities/tarball/master#egg=py_utilities-0.0.1'],
       license='MIT',
       tests_require=['flake8', 'mock', 'nose', 'nosexcover'])
 
