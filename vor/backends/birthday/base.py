@@ -10,12 +10,12 @@ from random import randint
 class DateProvider(object):
     __metaclass__ = abc.ABCMeta
 
-    def __init__(self):
-        pass
+    def __init__(self, *args, **kwargs):
+        super(DateProvider, self).__init__(*args, **kwargs)
 
     @abc.abstractmethod
     def get_birthday(self):
-        raise NotImplementedError
+        raise NotImplementedError  # pragma: no cover
 
     def _get_birthday(self, start, end=None):
         end = end or datetime.datetime.combine(datetime.date.today(),

@@ -6,8 +6,8 @@ import datetime
 
 
 class Oldest1900Provider(DateProvider):
-    def __init__(self):
-        super(Oldest1900Provider, self).__init__()
+    def __init__(self, *args, **kwargs):
+        super(Oldest1900Provider, self).__init__(*args, **kwargs)
 
     def get_birthday(self):
         return self._get_birthday(datetime.datetime(year=1900, month=1, day=1))
