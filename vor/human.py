@@ -14,7 +14,9 @@ class Gender(Enum):
 
 
 class RandomHuman(RandomNameBase):
-    def __init__(self, name_provider, gender=None):
+    def __init__(self, name_provider, gender=None, *args, **kwargs):
+        super(RandomHuman, self).__init__(*args, **kwargs)
+
         self._birthday = None
         self._first_name = None
         self._last_name = None

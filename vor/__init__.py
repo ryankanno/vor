@@ -3,6 +3,7 @@
 
 
 class RandomNameBase(object):
-    pass
+    def __init__(self, *args, **kwargs):
+        super(RandomNameBase, self).__init__(*args, **kwargs)
 
 # vim: filetype=python
