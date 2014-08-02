@@ -14,20 +14,25 @@ class Gender(Enum):
 
 
 class RandomHuman(RandomNameBase):
-    def __init__(self, name_provider, gender=None, *args, **kwargs):
+    def __init__(self,
+                 name_provider,
+                 birthday_provider=None,
+                 gender=None, *args, **kwargs):
         super(RandomHuman, self).__init__(*args, **kwargs)
 
+        self._birthday_provider = birthday_provider
         self._birthday = None
+
+        self._name_provider = name_provider
         self._first_name = None
         self._last_name = None
-        self._name_provider = name_provider
 
         self.gender = gender or random.choice([Gender.Male, Gender.Female])
         assert self.gender in list(Gender)
 
     @property
     def birthday(self):
-        if not self._birthday:
+        if not self._birthday and self._birthday_provider:
             self._birthday = self._birthday_provider.get_birthday()
         return self._birthday
 
@@ -57,13 +62,15 @@ class RandomHuman(RandomNameBase):
 
 
 class RandomMale(RandomHuman):
-    def __init__(self, name_provider):
-        super(RandomMale, self).__init__(name_provider, Gender.Male)
+    def __init__(self, name_provider, birthday_provider=None):
+        super(RandomMale, self).__init__(
+            name_provider, birthday_provider, Gender.Male)
 
 
 class RandomFemale(RandomHuman):
-    def __init__(self, name_provider):
-        super(RandomFemale, self).__init__(name_provider, Gender.Female)
+    def __init__(self, name_provider, birthday_provider=None):
+        super(RandomFemale, self).__init__(
+            name_provider, birthday_provider, Gender.Female)
 
 
 # vim: filetype=python
