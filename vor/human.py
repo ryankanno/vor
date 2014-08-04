@@ -16,7 +16,7 @@ class Gender(Enum):
 class RandomHuman(RandomNameBase):
     def __init__(self,
                  name_provider,
-                 birthday_provider=None,
+                 birthday_provider,
                  gender=None, *args, **kwargs):
         super(RandomHuman, self).__init__(*args, **kwargs)
 
@@ -62,13 +62,13 @@ class RandomHuman(RandomNameBase):
 
 
 class RandomMale(RandomHuman):
-    def __init__(self, name_provider, birthday_provider=None):
+    def __init__(self, name_provider, birthday_provider):
         super(RandomMale, self).__init__(
             name_provider, birthday_provider, Gender.Male)
 
 
 class RandomFemale(RandomHuman):
-    def __init__(self, name_provider, birthday_provider=None):
+    def __init__(self, name_provider, birthday_provider):
         super(RandomFemale, self).__init__(
             name_provider, birthday_provider, Gender.Female)
 
