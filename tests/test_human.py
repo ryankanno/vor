@@ -61,6 +61,17 @@ class TestHuman(unittest.TestCase):
 
     @patch('vor.backends.name.base.NameProvider')
     @patch('vor.backends.birthday.base.DateProvider')
+    def test_human_get_birthday_with_mock_birthday_provider(
+            self, mock_name_provider, mock_birthday_provider):
+        mock_name = self._prepare_mock_name_provider(mock_name_provider)
+        mock_birthday = self._prepare_mock_birthday_provider(
+            mock_birthday_provider)
+        human = RandomHuman(mock_name, mock_birthday)
+        human.birthday
+        mock_birthday.get_birthday.assert_called_once_with()
+
+    @patch('vor.backends.name.base.NameProvider')
+    @patch('vor.backends.birthday.base.DateProvider')
     def test_male_get_full_name_with_mock_name_provider(
             self, mock_name_provider, mock_birthday_provider):
         mock_name = self._prepare_mock_name_provider(mock_name_provider)
